@@ -1,0 +1,55 @@
+:root {
+	--ink: #07133b;
+	--muted: #566889;
+	--blue: #2399f5;
+	--pink: #a10661;
+	--line: #e5ecfa;
+	--surface: #ffffff;
+	--shell: min(100% - 3rem, 1240px);
+	--canvas: #f7faff; 
+	--content-width: 1240px; 
+	--page-gutter: clamp(1rem, 3vw, 3rem); 
+}
+	html { scroll-behavior: smooth; scroll-padding-top: 5.25rem; }
+	* { box-sizing: border-box; }
+	img { max-width: 100%; }
+	a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid rgba(37, 144, 240, .5); outline-offset: 3px; }
+	body { min-width: 320px; margin: 0; color: var(--ink); background: radial-gradient(circle at 90% 10%, rgba(36, 152, 242, .08), transparent 24rem), linear-gradient(180deg, #fff 0%, var(--canvas) 48%, #fff 100%); font-family: "Poppins", Arial, sans-serif; }
+button, input, textarea { font: inherit; }
+section { scroll-margin-top: 5.5rem; }
+.app-shell { overflow: clip; }
+.scroll-progress { position: fixed; z-index: 120; top: 0; left: 0; width: var(--scroll-progress, 0%); height: 3px; background: linear-gradient(90deg, var(--pink), var(--blue)); box-shadow: 0 0 14px rgba(35, 153, 245, .65); pointer-events: none; transition: width .08s linear; }
+	.hero, .my-journey-section, .skills-section, .experience-section, .education-section, .achievements-section, .learning-section, .roadmap-section, .contact-section, .cv-section, .projects-section, .site-footer { width: min(100% - (var(--page-gutter) * 2), var(--content-width)) !important; max-width: var(--content-width) !important; }
+	.my-journey-section, .skills-section, .experience-section, .education-section, .achievements-section, .learning-section, .roadmap-section, .contact-section, .cv-section, .projects-section, .site-footer { margin-left: auto !important; margin-right: auto !important; }
+	.my-journey-section, .skills-section, .experience-section, .education-section, .achievements-section, .learning-section, .roadmap-section, .contact-section, .cv-section, .projects-section, .site-footer { border: 0 !important; box-shadow: none !important; }
+	.my-journey-section, .skills-section, .experience-section, .education-section, .achievements-section, .learning-section, .roadmap-section, .contact-section, .cv-section, .projects-section { margin-top: clamp(1.25rem, 3vw, 2.5rem); margin-bottom: clamp(1.25rem, 3vw, 2.5rem); }
+.journey-header h1, .skills-header h2, .experience-header h2, .projects-header h2, .roadmap-header h2, .contact-header h2, .learning-header h2 { letter-spacing: -.035em; }
+.footer-profile p, .footer-profile .footer-role, .footer-links a, .footer-connect a, .footer-connect span, .footer-bottom, .contact-detail p, .contact-form input, .contact-form textarea, .contact-form button, .projects-header p, .project-card p, .project-tags span, .project-actions a, .roadmap-step p, .cv-copy p { font-size: .82rem; }
+.project-card h3, .roadmap-step h3, .contact-detail b { font-size: .95rem; }.projects-header span, .cv-eyebrow, .contact-header span { font-size: .78rem; }
+.experience-item small, .experience-item p, .experience-quote p, .journey-card p { font-size: .85rem; }
+@media (max-width: 700px) { :root { --shell: calc(100% - 1.5rem); } .my-journey-section, .skills-section, .experience-section, .education-section, .achievements-section, .learning-section, .roadmap-section, .contact-section, .cv-section, .projects-section, .site-footer { width: var(--shell); } }
+@media (max-width: 480px) { .hero-name { font-size: 2.35rem; }.hero-roles { align-items: flex-start; flex-wrap: wrap; }.hero-roles .sep { display: none; }.education-header h3 { font-size: 2.35rem; }.learning-header h2 { font-size: 2.5rem; }.cv-actions { flex-direction: column; }.cv-actions a { width: 100%; }.footer-main { grid-template-columns: 1fr; }.footer-connect, .footer-links { padding-top: .5rem; } }
+
+/* Motion is applied only after React is ready, so the page remains readable without JavaScript. */
+.motion-ready .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s cubic-bezier(.2, .75, .25, 1); transition-delay: var(--reveal-delay, 0ms); }
+.motion-ready .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Small interactive movements make the portfolio feel responsive without changing its layout. */
+.btn, .cta, .projects-view-all, .project-actions a, .cv-actions a, .contact-form button, .learning-footer button, .journey-connect { transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease; }
+.btn:hover, .cta:hover, .projects-view-all:hover, .project-actions a:hover, .cv-actions a:hover, .contact-form button:hover, .learning-footer button:hover, .journey-connect:hover { transform: translateY(-2px); }
+.project-card, .skills-card, .subject-card, .journey-card, .experience-item, .learning-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.project-card:hover, .skills-card:hover, .subject-card:hover, .journey-card:hover, .experience-item:hover, .learning-card:hover { transform: translateY(-5px); box-shadow: 0 16px 30px rgba(39, 63, 112, .13); }
+	.image-wrap { position: relative; animation: hero-float 5s ease-in-out infinite; }
+.skill-icon svg { animation: gentle-spin 9s linear infinite; }
+.hero-features .feature:nth-child(2) .f-icon { animation: gentle-bob 3.2s ease-in-out infinite .25s; }
+.hero-features .feature:nth-child(3) .f-icon { animation: gentle-bob 3.2s ease-in-out infinite .65s; }
+.contact-decoration-line { animation: decoration-drift 7s ease-in-out infinite; }
+@keyframes hero-float { 50% { transform: translateY(-16px); } }
+@keyframes gentle-spin { to { transform: rotate(360deg); } }
+@keyframes gentle-bob { 50% { transform: translateY(-4px); } }
+@keyframes decoration-drift { 50% { transform: rotate(36deg) translateY(7px); } }
+@media (min-width: 901px) {
+	.hero { min-height: min(720px, calc(100vh - 4.5rem)); }
+	.hero-right { min-height: 530px; align-items: center; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } .motion-ready .reveal { opacity: 1; transform: none; } }
